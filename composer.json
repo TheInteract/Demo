@@ -1,0 +1,12 @@
+{
+    "name": "chin/demo",
+    "authors": [
+        {
+            "name": "ChinCluBi",
+            "email": "chinnaporn.s@ku.th"
+        }
+    ],
+    "require": {
+        "interact-project/interact-php": "^0.1.0"
+    }
+}
