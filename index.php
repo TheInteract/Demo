@@ -4,7 +4,7 @@ require(__DIR__ . '/vendor/autoload.php');
 
 use Interact\Client;
 
-$client = new Client("fake-api-key-private", "");
+$client = new Client("demo-private-key", "");
 ?> 
 
 <html>
@@ -16,7 +16,7 @@ $client = new Client("fake-api-key-private", "");
   </head>
   <body>
 <?php
-    if ( $client->getFeature("1234")->isA() ) :
+    if ( $client->getFeature("DemoFeature2")->isA() ) :
 ?>
     <div class="container">
       <div class="nav">
@@ -77,7 +77,7 @@ $client = new Client("fake-api-key-private", "");
         </div>
     </div>
 <?php
-    elseif ( $client->getFeature("1234")->isB() ) :
+    elseif ( $client->getFeature("DemoFeature2")->isB() ) :
 ?>
     Version B
 <?php
@@ -103,10 +103,6 @@ $client = new Client("fake-api-key-private", "");
         $(".submit").click(function() {
             $("")
         })
-        $("#test").click(function(){
-          $.ajax({url: "testest:3000/collector/api/healthz", success: function(result){
-              console.log(result)
-          }});
         });
     </script>
   </body>
