@@ -78,13 +78,13 @@
       let middleNameMatcher = middleName.match(/\d+/g)
       let lastNameMatcher = lastName.match(/\d+/g)
       if (!firstName || firstName.length === 0 || firstName.indexOf(' ') > -1 || firstNameMatcher !== null) {
-        alert('Please put in correct first name')
+        alert('Please put in valid first name')
         return false
       } else if (!middleName || middleName.length === 0 || middleName.indexOf(' ') > -1 || middleNameMatcher !== null) {
-        alert('Please put in correct middle name')
+        alert('Please put in valid middle name')
         return false
       } else if (!lastName || lastName.length === 0 || lastName.indexOf(' ') > -1 || lastNameMatcher !== null) {
-        alert('Please put in correct LAST name')
+        alert('Please put in valid LAST name')
         return false
       }
       return true
@@ -100,7 +100,7 @@
       let email = $('#email').val()
       let emailConfirm = $('#email-confirm').val()
       if (!email || email.length === 0 || email.indexOf(' ') > -1 || !isEmail(email)) {
-        alert('Please put in correct email')
+        alert('Please put in valid email')
         return false
       }
       if (email !== emailConfirm) {
@@ -111,7 +111,7 @@
         alert('Too short email')
         return false
       }
-      $.ajax({url: 'api/validate?email=' + email, async: false}).done(function () {
+      $.ajax({url: 'api/validate, async: false}).done(function () {
         let hash = email.hashCode()
         if (hash % 5 === 0) {
           alert('Email is already in use')
@@ -128,8 +128,12 @@
       let password = $('#password').val()
       let passwordConfirm = $('#password-confirm').val()
       if (!password || password.length === 0 || password.indexOf(' ') > -1) {
-        alert('Please put in correct password (must not have space)')
+        alert('Please put in valid password')
         return false
+      }
+      if (password.length < 6) {
+        alert('Password is too short')
+        return false       
       }
       if (password !== passwordConfirm) {
         alert('Password and confirm is not the same')
