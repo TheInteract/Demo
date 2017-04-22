@@ -1,5 +1,6 @@
 FROM php:7.0-cli
 COPY ./src /app/src
+COPY ./demo /app/demo
 COPY ./styles /app/styles
 COPY ./vendor /app/vendor
 COPY ./index.php /app
