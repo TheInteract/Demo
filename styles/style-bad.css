@@ -47,6 +47,7 @@ a {
 }
 
 .nav {
+  z-index: 1000;
   position: absolute;
   top: 0;
   left: 0;
@@ -262,5 +263,13 @@ input:focus {
 }
 
 select{
-  height: 40px;
+  height: 42.67px;
+  padding: 10px;
+  font-size: 18px;
+  display: inline-block;
+  margin: 0;
+  outline: 0;
+  background-color: #fff;
+  border: 1px solid #e6ecf0;
+  border-radius: 5px;
 }

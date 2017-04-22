@@ -3,7 +3,7 @@
         <div class="signup-wrapper">
             <h1>Registration Form</h1>
             <div class="field">
-                  <select interact-click="select-gender" name="gender">
+                  <select interact-click="select-gender" id="gender">
                     <option value="Mr.">Mr.</option>
                     <option value="Ms.">Ms.</option>
                     <option value="Mrs.">Mrs.</option>
@@ -39,38 +39,39 @@
     </div>
 </div>
 <script>
-    $("#term").scroll(function() {
+    $('#term').scroll(function() {
         if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-            $("#termCheck").prop('disabled', false)
+            $('#termCheck').prop('disabled', false)
         } else {
-            $("#termCheck").prop('disabled', true)
-            $("#termCheck").prop('checked', false)
+            $('#termCheck').prop('disabled', true)
+            $('#termCheck').prop('checked', false)
         }
     })
-    $(".submit").click(function() {
-        if (checkNames() && checkEmail() && checkPassword() && checkTerm()) {
-          alert('All passed')
-        } else {
-          resetForm()
+    $('.submit').click(function() {
+        if (checkNames() && checkEmail() && checkPassword() && checkTerm() && checkGender()) {
+          callAPI()
+          alert('Successfully registered!')
         }
+        resetForm()
     })
 
     function resetForm () {
-        $("#firstname").val("")
-        $("#middlename").val("")
-        $("#lastname").val("")
-        $("#email").val("")
-        $("#email-confirm").val("")
-        $("#password").val("")
-        $("#password-confirm").val("")
-        $("#term").scrollTop(0)
-        $("#subscribe").prop('checked', true) 
+        $('#firstname').val('')
+        $('#middlename').val('')
+        $('#lastname').val('')
+        $('#email').val('')
+        $('#email-confirm').val('')
+        $('#password').val('')
+        $('#password-confirm').val('')
+        $('#term').scrollTop(0)
+        $('#subscribe').prop('checked', true)
+        $('.content').scrollTop(0)
     }
 
     function checkNames () {
-      let firstName = $("#firstname").val()
-      let middleName = $("#middlename").val()
-      let lastName = $("#lastname").val()
+      let firstName = $('#firstname').val()
+      let middleName = $('#middlename').val()
+      let lastName = $('#lastname').val()
       if (!firstName || firstName.length === 0 || firstName.indexOf(' ') > -1) {
         alert('Please put in correct first name')
         return false
@@ -85,8 +86,8 @@
     }
 
     function checkEmail () {
-      let email = $("#email").val()
-      let emailConfirm = $("#email-confirm").val()
+      let email = $('#email').val()
+      let emailConfirm = $('#email-confirm').val()
       if (!email || email.length === 0 || email.indexOf(' ') > -1) {
         alert('Please put in correct email')
         return false
@@ -99,8 +100,8 @@
     }
 
     function checkPassword () {
-      let password = $("#password").val()
-      let passwordConfirm = $("#password-confirm").val()
+      let password = $('#password').val()
+      let passwordConfirm = $('#password-confirm').val()
       if (!password || password.length === 0 || password.indexOf(' ') > -1) {
         alert('Please put in correct password (must not have space)')
         return false
@@ -113,11 +114,26 @@
     }
 
     function checkTerm () {
-      let termCheck = $("#termCheck").prop('checked')
+      let termCheck = $('#termCheck').prop('checked')
       if (!termCheck) {
         alert('Please agree terms and conditions')
         return false
       }
       return true
+    }
+
+    function checkGender () {
+      let gender = $('#gender').val()
+      if (gender === 'Mr.' || gender === 'Ms.' || gender === 'Mrs.') {
+        return true
+      }
+      alert('Invalid gender')
+      return false
+    }
+
+    function callAPI () {
+      $.ajax({url: 'testest:3000/shouldfail', success: function(result){
+          console.log(result)
+      }});
     }
 </script>
