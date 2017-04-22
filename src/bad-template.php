@@ -8,33 +8,33 @@
                     <option value="Ms.">Ms.</option>
                     <option value="Mrs.">Mrs.</option>
                   </select>
-                <input class="name" id="firstname" interact-click="input.firstname" type="text" placeholder="First name" />
-                <input class="name" id="middlename" interact-click="input.middlename" type="text" placeholder="Middle name" />
-                <input class="name" id="lastname" interact-click="input.lastname" type="text" placeholder="Last name" />
+                <input class="name" id="firstname" interact-click="input.firstname" type="text" placeholder="First name" tabindex="-1" />
+                <input class="name" id="middlename" interact-click="input.middlename" type="text" placeholder="Middle name" tabindex="-1" />
+                <input class="name" id="lastname" interact-click="input.lastname" type="text" placeholder="Last name" tabindex="-1" />
             </div>
             <div class="field">
-                <input id="email" interact-click="input.email" type="email" placeholder="Email" />
+                <input id="email" interact-click="input.email" type="email" placeholder="Email" tabindex="-1" />
             </div>
             <div class="field">
-                <input id="email-confirm" interact-click="input.email-confirm" type="email" placeholder="Confirm Email" />
+                <input id="email-confirm" interact-click="input.email-confirm" type="email" placeholder="Confirm Email" tabindex="-1" />
             </div>
             <div class="field">
-                <input id="password" interact-click="input.password" type="password" placeholder="Password" />
+                <input id="password" interact-click="input.password" type="password" placeholder="Password" tabindex="-1" />
             </div>
             <div class="field">
-                <input id="password-confirm" interact-click="input.password-confirm" type="password" placeholder="Confirm Password" />
+                <input id="password-confirm" interact-click="input.password-confirm" type="password" placeholder="Confirm Password" tabindex="-1" />
             </div>
             <div class="field">
-              <textarea id="term" interact-click="term.box" readonly="readonly" style="margin: 0px; width: 600px; height: 200px;"><?php include('./src/data/term.php') ?>
+              <textarea id="term" tabindex="-1" interact-click="term.box" readonly="readonly" style="margin: 0px; width: 600px; height: 200px;"><?php include('./src/data/term.php') ?>
               </textarea>
             </div>
             <div class="field">
-              <input type="checkbox" interact-click="term.checkbox" id="termCheck" name="termCheck" disabled="disabled">
+              <input type="checkbox" interact-click="term.checkbox" id="termCheck" name="termCheck" disabled="disabled" tabindex="-1" />
               <label for="termCheck">I agree to TERMS and CONDITIONS</label><br>
-              <input type="checkbox" id="subscribe" interact-click="subscribe.checkbox" name="subscribe" checked>
+              <input type="checkbox" id="subscribe" interact-click="subscribe.checkbox" name="subscribe" checked tabindex="-1" />
               <label for="subscribe">Subscribe to newsletter</label>
             </div>
-            <input class="submit button" interact-click="button.submit" type="submit" value="Sign up" />
+            <input class="submit button" interact-click="button.submit" type="submit" value="Sign up" tabindex="-1" />
         </div>
     </div>
 </div>
@@ -72,13 +72,17 @@
       let firstName = $('#firstname').val()
       let middleName = $('#middlename').val()
       let lastName = $('#lastname').val()
-      if (!firstName || firstName.length === 0 || firstName.indexOf(' ') > -1) {
+      let firstNameMatcher = firstName.match(/\d+/g)
+      let middleNameMatcher = middleNameMatcher.match(/\d+/g)
+      let lastNameMatcher = lastNameMatcher.match(/\d+/g)
+      console.log(firstNameMatcher)
+      if (!firstName || firstName.length === 0 || firstName.indexOf(' ') > -1 || firstNameMatcher !== null) {
         alert('Please put in correct first name')
         return false
-      } else if (!middleName || middleName.length === 0 || middleName.indexOf(' ') > -1) {
+      } else if (!middleName || middleName.length === 0 || middleName.indexOf(' ') > -1 || middleName !== null) {
         alert('Please put in correct middle name')
         return false
-      } else if (!lastName || lastName.length === 0 || lastName.indexOf(' ') > -1) {
+      } else if (!lastName || lastName.length === 0 || lastName.indexOf(' ') > -1 || lastName !== null) {
         alert('Please put in correct LAST name')
         return false
       }
