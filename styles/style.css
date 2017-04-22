@@ -160,7 +160,7 @@ input:focus {
   position: absolute;
   top: 0;
   left: 372px;
-  width: 300px;
+  width: 400px;
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
@@ -185,12 +185,38 @@ input:focus {
   display: block;
 }
 
-.sidetip > p.error {
+.sidetip > p.error, p.already {
   color: #c33;
 }
 
 .sidetip > p.ok {
   color: #56b4ef;
+}
+
+.sidetip > p.checking {
+  margin-left: 25px;
+}
+
+@keyframes spinAround {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sidetip > p.checking:before {
+  position: absolute;
+  margin-left: -25px;
+  width: 1em;
+  height: 1em;
+  border: 3px solid #f4f4f5;
+  border-top-color: #6c6e7e;
+  border-radius: 50%;
+  content: '';
+  animation: spinAround 500ms infinite linear;
+  pointer-events: none;
 }
 
 .submit.button {

@@ -9,7 +9,7 @@ $client = new Client("demo-private-key", "");
 
 <html>
   <head>
-    <title>example - collector</title>
+    <title>example - artemis</title>
     <?php
         if ( $client->getFeature("DemoFeature2")->isA() ) {
     ?>
