@@ -111,7 +111,7 @@
         alert('Too short email')
         return false
       }
-      $.ajax({url: 'api/validate, async: false}).done(function () {
+      $.ajax({url: 'api/validate', async: false}).done(function () {
         let hash = email.hashCode()
         if (hash % 5 === 0) {
           alert('Email is already in use')
