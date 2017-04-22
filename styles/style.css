@@ -185,7 +185,7 @@ input:focus {
   display: block;
 }
 
-.sidetip > p.error {
+.sidetip > p.error, p.already {
   color: #c33;
 }
 

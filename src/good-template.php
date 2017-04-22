@@ -30,6 +30,12 @@
                             <i class="fa fa-times" aria-hidden="true"></i>
                             Please enter a valid email.
                         </p>
+                        <p class="already">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                            This email is already registered.
+                             Want to <a href="https://twitter.com/login" target="_blank">login</a>
+                              or <a href="https://twitter.com/account/begin_password_reset" target="_blank">recover your password</a>?
+                        </p>
                     </div>
                 </div>
                 <div class="field">
@@ -72,6 +78,16 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 <script>
+    String.prototype.hashCode = function(){
+        let hash = 0;
+        if (this.length == 0) return hash;
+        for (i = 0; i < this.length; i++) {
+            char = this.charCodeAt(i);
+            hash = ((hash<<5)-hash)+char;
+            hash = hash & hash; // Convert to 32bit integer
+        }
+        return hash;
+    }
     $(".advanced-options a").click(function() {
         $(".advanced-options .list").slideToggle({
             duration: 500
@@ -79,7 +95,11 @@
     });
     $.formUtils.addValidator({
         name: 'email_api',
+        errorMessage: 'Email is invalid',
         validatorFunction: function(value, $el, config, language, $form) {
+            if(!/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value)) {
+                return false
+            }
             $($el[0].nextElementSibling).find('.active').removeClass('active')
             $($el[0].nextElementSibling).find('.checking').addClass('active')
             $.ajax({
@@ -88,14 +108,20 @@
             .then(() => {
                 setTimeout(function() {
                     $($el[0].nextElementSibling).find('.active').removeClass('active')
-                    $($el[0].nextElementSibling).find('.ok').addClass('active')
+                    let hash = value.hashCode()
+                    if (hash % 5 === 0 ) {
+                        $($el[0].nextElementSibling).find('.already').addClass('active')
+                    } else {
+                        $($el[0].nextElementSibling).find('.ok').addClass('active')
+                    }
                 }, 2000);
             })
             return true
         }
     })
     $.validate({
-        modules : 'security',
+        errorElementClass: '_error',
+        modules: 'security',
         inlineErrorMessageCallback: function($input, messageStatus, config) {
             if(messageStatus) {
                 onError($input)
@@ -103,18 +129,18 @@
                 onSuccess($input)
             }
             return false
+        },
+        onSuccess: ($form) => {
+            alert('Successfully Registered')
+            location.reload()
         }
     })
     function onSuccess($input) {
-        $input.map((i, e) => {
-            $(e.nextElementSibling).find('.active').removeClass('active')
-            $(e.nextElementSibling).find('.ok').addClass('active')
-        })
+        $($input[0].nextElementSibling).find('.active').removeClass('active')
+        $($input[0].nextElementSibling).find('.ok').addClass('active')
     }
-    function onError($input, errorMessages) {
-        $input.map((i, e) => {
-            $(e.nextElementSibling).find('.active').removeClass('active')
-            $(e.nextElementSibling).find('.error').addClass('active')
-        })
+    function onError($input) {
+        $($input[0].nextElementSibling).find('.active').removeClass('active')
+        $($input[0].nextElementSibling).find('.error').addClass('active')
     }
 </script>
