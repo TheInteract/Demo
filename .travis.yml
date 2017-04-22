@@ -1,6 +1,9 @@
+sudo: required
 language: php
 php:
 - '7.1'
+services:
+- docker
 before_install:
 - openssl aes-256-cbc -K $encrypted_f817082538bd_key -iv $encrypted_f817082538bd_iv -in interact-fb342f8826c7.json.enc -out interact-fb342f8826c7.json -d
 - if [ ! -d ${HOME}/google-cloud-sdk ]; then export CLOUDSDK_CORE_DISABLE_PROMPTS=1;
