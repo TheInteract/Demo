@@ -25,3 +25,9 @@ after_success:
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 - docker push "$DOCKER_USERNAME"/"$IMAGE_NAME":"$TRAVIS_BUILD_NUMBER"
 - docker push "$DOCKER_USERNAME"/"$IMAGE_NAME":latest
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: kubectl --namespace default patch deployment demo -p'{"spec":{"template":{"spec":{"containers":[{"name":"demo","image":"chaoexit/interact-demo:'$TRAVIS_BUILD_NUMBER'"}]}}}}'
+  on:
+    branch: master
