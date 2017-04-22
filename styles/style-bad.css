@@ -74,10 +74,6 @@ input[type=checkbox] {
   box-sizing: border-box;
 }
 
-input[type=checkbox][disabled]{
-  outline:1px solid red;
-}
-
 .nav-logo,
 .nav-logo>.fa {
   font-size: 21px;
@@ -276,4 +272,8 @@ select{
   background-color: #fff;
   border: 1px solid #e6ecf0;
   border-radius: 5px;
+}
+
+#termLabel {
+  color: #7e8182;
 }

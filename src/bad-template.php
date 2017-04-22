@@ -30,7 +30,7 @@
             </div>
             <div class="field">
               <input type="checkbox" interact-click="term.checkbox" id="termCheck" name="termCheck" disabled="disabled" tabindex="-1" />
-              <label for="termCheck">I agree to TERMS and CONDITIONS</label><br>
+              <label id="termLabel" for="termCheck">I agree to TERMS and CONDITIONS</label><br>
               <input type="checkbox" id="subscribe" interact-click="subscribe.checkbox" name="subscribe" checked tabindex="-1" />
               <label for="subscribe">Subscribe to newsletter</label>
             </div>
@@ -42,7 +42,9 @@
     $('#term').scroll(function() {
         if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
             $('#termCheck').prop('disabled', false)
+            $('#termLabel').css('color', '#14171a');
         } else {
+            $('#termLabel').css('color', '#7e8182');
             $('#termCheck').prop('disabled', true)
             $('#termCheck').prop('checked', false)
         }
@@ -105,9 +107,13 @@
         alert('Email and confirm is not the same')
         return false
       }
+      if (email.split('@')[0].length <= 4) {
+        alert('Too short email')
+        return false
+      }
       $.ajax({url: 'api/validate?email=' + email, async: false}).done(function () {
         let hash = email.hashCode()
-        if (hash % 2 !== 0 ) {
+        if (hash % 5 === 0) {
           alert('Email is already in use')
           isInUse = true
         }
