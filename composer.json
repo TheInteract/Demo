@@ -7,6 +7,6 @@
         }
     ],
     "require": {
-        "interact-project/interact-php": "^0.1.0"
+        "interact-project/interact-php": ">=0.1.0"
     }
 }
