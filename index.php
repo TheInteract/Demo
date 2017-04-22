@@ -13,12 +13,12 @@ $client = new Client("demo-private-key", "");
     <?php
         if ( $client->getFeature("DemoFeature2")->isA() ) {
     ?>
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./style.css">
     <?php
         }
         elseif ( $client->getFeature("DemoFeature2")->isB() ) {
     ?>
-    <link rel="stylesheet" href="./styles/style-bad.css">
+    <link rel="stylesheet" href="./style-bad.css">
     <?php
         }
     ?>
