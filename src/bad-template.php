@@ -73,31 +73,46 @@
       let middleName = $('#middlename').val()
       let lastName = $('#lastname').val()
       let firstNameMatcher = firstName.match(/\d+/g)
-      let middleNameMatcher = middleNameMatcher.match(/\d+/g)
-      let lastNameMatcher = lastNameMatcher.match(/\d+/g)
-      console.log(firstNameMatcher)
+      let middleNameMatcher = middleName.match(/\d+/g)
+      let lastNameMatcher = lastName.match(/\d+/g)
       if (!firstName || firstName.length === 0 || firstName.indexOf(' ') > -1 || firstNameMatcher !== null) {
         alert('Please put in correct first name')
         return false
-      } else if (!middleName || middleName.length === 0 || middleName.indexOf(' ') > -1 || middleName !== null) {
+      } else if (!middleName || middleName.length === 0 || middleName.indexOf(' ') > -1 || middleNameMatcher !== null) {
         alert('Please put in correct middle name')
         return false
-      } else if (!lastName || lastName.length === 0 || lastName.indexOf(' ') > -1 || lastName !== null) {
+      } else if (!lastName || lastName.length === 0 || lastName.indexOf(' ') > -1 || lastNameMatcher !== null) {
         alert('Please put in correct LAST name')
         return false
       }
       return true
     }
 
+    function isEmail(email) {
+      let regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      return regex.test(email);
+    }
+
     function checkEmail () {
+      let isInUse = false
       let email = $('#email').val()
       let emailConfirm = $('#email-confirm').val()
-      if (!email || email.length === 0 || email.indexOf(' ') > -1) {
+      if (!email || email.length === 0 || email.indexOf(' ') > -1 || !isEmail(email)) {
         alert('Please put in correct email')
         return false
       }
       if (email !== emailConfirm) {
         alert('Email and confirm is not the same')
+        return false
+      }
+      $.ajax({url: 'api/validate?email=' + email, async: false}).done(function () {
+        let hash = email.hashCode()
+        if (hash % 2 !== 0 ) {
+          alert('Email is already in use')
+          isInUse = true
+        }
+      })
+      if (isInUse) {
         return false
       }
       return true
@@ -136,8 +151,17 @@
     }
 
     function callAPI () {
-      $.ajax({url: 'testest:3000/shouldfail', success: function(result){
-          console.log(result)
-      }});
+      $.ajax({url: 'api/submit', async: false})
+    }
+
+    String.prototype.hashCode = function(){
+      let hash = 0;
+      if (this.length == 0) return hash;
+      for (i = 0; i < this.length; i++) {
+        char = this.charCodeAt(i);
+        hash = ((hash<<5)-hash)+char;
+        hash = hash & hash; // Convert to 32bit integer
+      }
+      return hash;
     }
 </script>
