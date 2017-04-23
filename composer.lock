@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1b4b17ffb57b92b8f41091701d7860ef",
+    "content-hash": "625ed6da79ef04d783b6e9478d0712f0",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -186,16 +186,16 @@
         },
         {
             "name": "interact-project/interact-php",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TheInteract/interact-php.git",
-                "reference": "b9866ae51eb3d4dfbe0e585bad418222afd8e9e7"
+                "reference": "79962c974913ff0a6bc8ac53871e1e71e86c8e35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TheInteract/interact-php/zipball/b9866ae51eb3d4dfbe0e585bad418222afd8e9e7",
-                "reference": "b9866ae51eb3d4dfbe0e585bad418222afd8e9e7",
+                "url": "https://api.github.com/repos/TheInteract/interact-php/zipball/79962c974913ff0a6bc8ac53871e1e71e86c8e35",
+                "reference": "79962c974913ff0a6bc8ac53871e1e71e86c8e35",
                 "shasum": ""
             },
             "require": {
@@ -218,7 +218,7 @@
                     "email": "chinnaporn.s@ku.th"
                 }
             ],
-            "time": "2017-04-22T17:33:53+00:00"
+            "time": "2017-04-23T14:54:44+00:00"
         },
         {
             "name": "psr/http-message",
