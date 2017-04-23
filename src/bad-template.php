@@ -80,9 +80,6 @@
       if (!firstName || firstName.length === 0 || firstName.indexOf(' ') > -1 || firstNameMatcher !== null) {
         alert('Please put in valid first name')
         return false
-      } else if (!middleName || middleName.length === 0 || middleName.indexOf(' ') > -1 || middleNameMatcher !== null) {
-        alert('Please put in valid middle name')
-        return false
       } else if (!lastName || lastName.length === 0 || lastName.indexOf(' ') > -1 || lastNameMatcher !== null) {
         alert('Please put in valid LAST name')
         return false
