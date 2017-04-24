@@ -3,11 +3,9 @@
         <div class="signup-wrapper">
             <h1>Registration Form</h1>
             <div class="field">
-                  <select interact-click="select-prefix" id="gender">
-                    <option value="Mr.">Mr.</option>
-                    <option value="Ms.">Ms.</option>
-                    <option value="Mrs.">Mrs.</option>
-                  </select>
+            <input type="radio" interact-click="select-gender-mr" name="prefix" value="male"> Mr.</input>
+            <input type="radio" interact-click="select-gender-ms" name="prefix" value="female"> Ms.</input>
+            <input type="radio" interact-click="select-gender-mrs" name="prefix" value="other"> Mrs.</input>
                 <input class="name" id="firstname" interact-click="input.firstname" type="text" placeholder="First name" tabindex="-1" />
                 <input class="name" id="middlename" interact-click="input.middlename" type="text" placeholder="Middle name" tabindex="-1" />
                 <input class="name" id="lastname" interact-click="input.lastname" type="text" placeholder="Last name" tabindex="-1" />
