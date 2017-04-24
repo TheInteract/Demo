@@ -3,7 +3,7 @@
         <div class="signup-wrapper">
             <h1>Registration Form</h1>
             <div class="field">
-                  <select interact-click="select-gender" id="gender">
+                  <select interact-click="select-prefix" id="gender">
                     <option value="Mr.">Mr.</option>
                     <option value="Ms.">Ms.</option>
                     <option value="Mrs.">Mrs.</option>
