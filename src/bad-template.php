@@ -3,9 +3,9 @@
         <div class="signup-wrapper">
             <h1>Registration Form</h1>
             <div class="field">
-                <label><input type="radio" interact-click="select-gender-mr" name="prefix" value="male"> Mr.</label>
-                <label><input type="radio" interact-click="select-gender-ms" name="prefix" value="male"> Ms.</label>
-                <label><input type="radio" interact-click="select-gender-mrs" name="prefix" value="male"> Mrs.</label>
+                <label><input type="radio" interact-click="select-prefix-mr" name="prefix" value="male"> Mr.</label>
+                <label><input type="radio" interact-click="select-prefix-ms" name="prefix" value="male"> Ms.</label>
+                <label><input type="radio" interact-click="select-prefix-mrs" name="prefix" value="male"> Mrs.</label>
             </div>
             <div class="field">
                 <input class="name" id="firstname" interact-click="input.firstname" type="text" placeholder="First name" tabindex="-1" />
@@ -50,7 +50,7 @@
         }
     })
     $('.submit').click(function() {
-        if (checkNames() && checkEmail() && checkPassword() && checkTerm() && checkGender()) {
+        if (checkNames() && checkEmail() && checkPassword() && checkTerm()) {
           callAPI()
           alert('Successfully registered!')
         }
@@ -146,15 +146,6 @@
         return false
       }
       return true
-    }
-
-    function checkGender () {
-      let gender = $('#gender').val()
-      if (gender === 'Mr.' || gender === 'Ms.' || gender === 'Mrs.') {
-        return true
-      }
-      alert('Invalid gender')
-      return false
     }
 
     function callAPI () {
