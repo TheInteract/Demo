@@ -4,19 +4,19 @@ require(__DIR__ . '/vendor/autoload.php');
 
 use Interact\Client;
 
-$client = new Client("demo-private-key", "");
+$client = new Client("7a1z0H1EV6gF071u57WL27h8sh8Y3PUB", "");
 ?> 
 
 <html>
   <head>
     <title>example - artemis</title>
     <?php
-        if ( $client->getFeature("DemoFeature2")->isA() ) {
+        if ( $client->getFeature("Registration")->isA() ) {
     ?>
     <link rel="stylesheet" href="style.css">
     <?php
         }
-        elseif ( $client->getFeature("DemoFeature2")->isB() ) {
+        elseif ( $client->getFeature("Registration")->isB() ) {
     ?>
     <link rel="stylesheet" href="style-bad.css">
     <?php
@@ -33,10 +33,10 @@ $client = new Client("demo-private-key", "");
             </div>
         </div>
         <?php
-            if ( $client->getFeature("DemoFeature2")->isA() ) {
+            if ( $client->getFeature("Registration")->isA() ) {
                 include('./src/good-template.php');
             }
-            elseif ( $client->getFeature("DemoFeature2")->isB() ) {
+            elseif ( $client->getFeature("Registration")->isB() ) {
                 include('./src/bad-template.php');
             }
             else {
