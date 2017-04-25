@@ -41,7 +41,11 @@ $client = new Client("7a1z0H1EV6gF071u57WL27h8sh8Y3PUB", "");
             }
             else {
         ?>
+        <div class="content">
+            <div class="content-body">
                 Feature is Closed
+            </div>
+        </div>
         <?php
             }
         ?>
