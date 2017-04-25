@@ -28,7 +28,7 @@ $client = new Client("7a1z0H1EV6gF071u57WL27h8sh8Y3PUB", "");
   <body>
     <div class="container">
         <div class="nav">
-            <div class="nav-logo" interact-click="logo">
+            <div class="nav-logo">
                 <i class="fa fa-twitter" aria-hidden="true"></i>
             </div>
         </div>
