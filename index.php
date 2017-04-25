@@ -11,14 +11,14 @@ $client = new Client("7a1z0H1EV6gF071u57WL27h8sh8Y3PUB", "");
   <head>
     <title>example - artemis</title>
     <?php
-        if ( $client->getFeature("Registration")->isA() ) {
-    ?>
-    <link rel="stylesheet" href="style.css">
-    <?php
-        }
-        elseif ( $client->getFeature("Registration")->isB() ) {
+        if ( $client->getFeature("Registration")->isB() ) {
     ?>
     <link rel="stylesheet" href="style-bad.css">
+    <?php
+        }
+        else {
+    ?>
+    <link rel="stylesheet" href="style.css">
     <?php
         }
     ?>
